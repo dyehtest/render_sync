@@ -12,7 +12,7 @@ module RenderSync
       Thread.current["sync_refetch_classes"] = nil if Rails.env.development?
 
       Thread.current["sync_refetch_classes"] ||= begin
-        Dir["app/views/sync/*/refetch"].collect{|path|
+        Dir["app/views/sync/**/refetch"].collect{|path|
           path.split(/sync\/(.*?)\/refetch/)[1].classify
         }.reject{|clazz| clazz.nil? }
       end
